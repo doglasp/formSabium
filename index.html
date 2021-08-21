@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cadastro de cliente</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/errors.css" />
+  </head>
+  <body>
+
+    <div class="header">
+      <a href="#default" class="logo">Sabium Sistemas</a>
+    </div>
+    
+    <h1>Formulário de cadastro de cliente</h1>
+    <div class="container">
+      <div id="successMessage"><span>Dados cadastrados com sucesso!</span></div>
+      <form onsubmit="formController.add(event)">
+        <div class="row">
+          <div class="col-25">
+            <label for="name">Nome completo:</label>
+          </div>
+          <div class="col-75">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Digite seu nome completo aqui"
+              onfocusout="formController.nameValidation()"
+            />
+            <ul id="name-error" class="error-message"></ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="email">Email:</label>
+          </div>
+          <div class="col-75">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Digite seu email aqui"
+              onfocusout="formController.emailValidation()"
+            />
+            <ul id="email-error" class="error-message"></ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="cpf">CPF (somente números):</label>
+          </div>
+          <div class="col-75">
+            <input
+              type="text"
+              id="cpf"
+              name="cpf"
+              onfocusout="formController.cpfValidation()"
+            />
+            <ul id="cpf-error" class="error-message"></ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="age">Idade:</label>
+          </div>
+          <div class="col-75">
+            <input
+              type="number"
+              id="age"
+              name="age"
+              min="0"
+              step="1"
+              value="0"
+              onfocusout="formController.ageValidation()"
+            />
+            <ul id="age-error" class="error-message"></ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="date">Data de nascimento</label>
+          </div>
+          <div class="col-75">
+            <input
+              type="date"
+              id="date"
+              name="date"
+              onfocusout="formController.dateValidation()"
+            />
+            <ul id="date-error" class="error-message"></ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="sex">Sexo:</label>
+          </div>
+          <div class="col-75">
+            <select id="sex" name="sex" onfocusout="formController.sexValidation()">
+              <option value="0">Selecione uma das opções</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Femenino</option>
+              <option value="Outro">Outro</option>
+              <option value="Prefiro não responder">
+                Prefiro não responder
+              </option>
+            </select>
+            <ul id="sex-error" class="error-message"></ul>
+          </div>
+        </div>
+        <div class="row">
+          <input type="submit" value="Salvar" />
+        </div>
+      </form>
+    </div>
+
+    <script src="js/controllers/FormController.js"></script>
+    <script src="js/helpers/ValidationHelper.js"></script>
+    <script src="js/helpers/ValidateCPF.js"></script>
+    <script>
+      let formController = new FormController();
+    </script>
+  </body>
+</html>
